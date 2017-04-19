@@ -90,7 +90,7 @@ fun File.deleteAfter(seconds: Long) {
  * Cancel the schedule to deletion
  * @return true if canceled with success
  */
-fun File.cancelDeletion(): Boolean =
+fun File.cancelDeleteSchedule(): Boolean =
 	deleteSchedule?.cancel(false)?:false
 
 /**
@@ -99,7 +99,7 @@ fun File.cancelDeletion(): Boolean =
  */
 fun File.resetDeletionTime(): Boolean =
 	if(deleteSchedule != null) {
-		cancelDeletion()
+		cancelDeleteSchedule()
 		deleteAfter(scheduleTime?:0)
 		true
 	} else {
