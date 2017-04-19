@@ -1,3 +1,8 @@
+/**
+ * Extention for java.util.File class adding methods to delete after few seconds
+ * @author Vinicius Cunha
+ */
+
 package br.com.castecnologia
 
 import br.com.vroc.autodeletefile.util.WeakIdentityHashMap
