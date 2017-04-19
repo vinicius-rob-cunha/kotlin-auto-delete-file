@@ -97,7 +97,7 @@ fun File.cancelDeleteSchedule(): Boolean =
  * Cancel the current schedule and create a new one with last time
  * @return true if canceled with success
  */
-fun File.resetDeletionTime(): Boolean =
+fun File.resetDeleteSchedule(): Boolean =
 	if(deleteSchedule != null) {
 		cancelDeleteSchedule()
 		deleteAfter(scheduleTime?:0)
@@ -145,7 +145,7 @@ fun main(args: Array<String>) {
 	
 	Thread.sleep(5000)
 	
-	println("cancel " + file.cancelDeletion() )
+	println("cancel " + file.cancelDeleteSchedule() )
 	
 	Thread.sleep(5000)
 	
