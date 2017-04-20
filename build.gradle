@@ -1,0 +1,23 @@
+buildscript {
+	ext {
+		kotlinVersion = '1.1.1'
+	}
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+	}
+}
+
+apply plugin: 'kotlin'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
+
+    testCompile 'junit:junit:4.12'
+}

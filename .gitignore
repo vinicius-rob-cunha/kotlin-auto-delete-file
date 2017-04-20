@@ -1,1 +1,8 @@
 bin
+/.gradle/
+/build/
+
+### ECLIPSE ###
+.classpath
+.project
+.settings
