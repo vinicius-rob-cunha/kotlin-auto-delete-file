@@ -49,11 +49,7 @@ class FieldProperty<R, T : Any?>(
  */
 object FileDeleteService {
 	val deleteService = Executors.newSingleThreadScheduledExecutor(object : ThreadFactory {
-		override fun newThread(r: Runnable?): Thread? {
-			var t = Thread(r)
-			t.isDaemon = true
-			return t;			
-		}
+		override fun newThread(r: Runnable?) = Thread(r).apply { isDaemon = true }
 	})
 }
 
