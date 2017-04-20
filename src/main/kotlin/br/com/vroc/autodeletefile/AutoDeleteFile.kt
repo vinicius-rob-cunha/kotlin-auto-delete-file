@@ -48,8 +48,8 @@ class FieldProperty<R, T : Any?>(
  * Singleton to create ScheduledExecutorService
  */
 object FileDeleteService {
-	val deleteService = Executors.newSingleThreadScheduledExecutor(object : ThreadFactory {
-		override fun newThread(r: Runnable?) = Thread(r).apply { isDaemon = true }
+	val deleteService = Executors.newSingleThreadScheduledExecutor({
+		r -> Thread(r).apply { isDaemon = true }
 	})
 }
 
