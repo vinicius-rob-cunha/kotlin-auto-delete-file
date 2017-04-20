@@ -3,7 +3,7 @@
  * @author Vinicius Cunha
  */
 
-package br.com.castecnologia
+package br.com.vroc.autodeletefile
 
 import br.com.vroc.autodeletefile.util.WeakIdentityHashMap
 import java.io.File
