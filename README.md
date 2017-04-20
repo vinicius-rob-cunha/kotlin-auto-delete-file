@@ -23,7 +23,7 @@ To make more secure delete directories i created deleteDirContent
 
     file.deleteDirContent()
     
-this method delete all files inside folder using `Files.walkFileTree`
+this method delete all files and directories inside directory using `Files.walk`
 
 ## How it works
 
