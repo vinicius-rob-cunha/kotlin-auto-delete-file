@@ -112,20 +112,15 @@ fun File.resetDeleteSchedule(): Boolean =
 	}
 	
 /**
- * <p>Delete all file inside a directory using Files.walkFileTree.</p>
+ * <p>Delete all file inside a directory using Files.walk.</p>
  * <p>If file is not a directory do nothing</p>
  */
 fun File.deleteDirContent() {
 	if(isDirectory()) {
-		Files.walkFileTree(toPath(), object : SimpleFileVisitor<Path>() {
-			override fun visitFile(file: Path, attrs: BasicFileAttributes): FileVisitResult {
-				Files.delete(file);
-				return FileVisitResult.CONTINUE;
-			}
-			override fun postVisitDirectory(dir: Path, exc: IOException): FileVisitResult {
-				Files.delete(dir);
-				return FileVisitResult.CONTINUE;
-			}
-		})
+		Files.walk(toPath())
+			 .filter({ path -> path != toPath() })
+             .map(Path::toFile)
+             .sorted({ p1, p2 -> -p1.compareTo(p2) })
+             .forEach({it.delete()});
 	}
 }
