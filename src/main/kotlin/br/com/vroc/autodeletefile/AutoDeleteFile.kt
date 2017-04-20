@@ -129,34 +129,3 @@ fun File.deleteDirContent() {
 		})
 	}
 }
-
-fun main(args: Array<String>) {
-	
-	/**
- 	 * few fast tests
- 	 * TODO create unit tests
- 	 */
-	
-	val file = File.createTempFile("text", ".tmp");
-	file.deleteAfter(8)
-	
-	val timer = Timer("schedule", true)
-	
-	timer.scheduleAtFixedRate(object : TimerTask() {
-		override fun run() {
-			println(file.exists())
-		}
-	},1000,1000)
-	
-	Thread.sleep(5000)
-	
-	println("cancel " + file.cancelDeleteSchedule() )
-	
-	Thread.sleep(5000)
-	
-	println("passou 10")
-	
-	Thread.sleep(5000)
-	
-	timer.cancel()
-}
