@@ -3,11 +3,15 @@ package br.com.vroc.autodeletefile
 import org.junit.Assert.*
 import org.junit.Test
 import java.io.File
+import org.junit.Before
+import org.junit.After
+import java.nio.file.Files
 
 class AutoDeleteFileTest {
 	
+	val file = File.createTempFile("file_autodelete_test", ".tmp")
+	
 	@Test fun shouldDeleteAfter2Seconds() {
-		val file = File.createTempFile("test", "tmp")
 		file.deleteAfter(2)
 		
 		assertTrue(file.exists()) 
@@ -18,7 +22,6 @@ class AutoDeleteFileTest {
 	}
 	
 	@Test fun shouldNotBeDeleteAfterCancel() {
-		val file = File.createTempFile("test", "tmp")
 		file.deleteAfter(2)
 		
 		assertTrue(file.exists()) 
@@ -34,7 +37,6 @@ class AutoDeleteFileTest {
 	}
 	
 	@Test fun shouldDeleteAfterReset() {
-		val file = File.createTempFile("test", "tmp")
 		file.deleteAfter(2)
 		
 		assertTrue(file.exists()) 
@@ -54,5 +56,9 @@ class AutoDeleteFileTest {
 		//passed 3.1 seconds (1 of first sleep, plus 2 of reset)
 		assertFalse(file.exists()) 
 	}
+	
+	@After fun deleteFile() {
+        Files.deleteIfExists(file.toPath())
+    }
 	
 }
