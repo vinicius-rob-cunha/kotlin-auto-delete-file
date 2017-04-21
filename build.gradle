@@ -12,6 +12,8 @@ buildscript {
 
 apply plugin: 'kotlin'
 
+kotlin { experimental { coroutines 'enable' } }
+
 repositories {
     jcenter()
 }
